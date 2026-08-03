@@ -1,7 +1,8 @@
 # KEYPLAN: Legend-Keyed Relational Graph Recovery
 
-A vision challenge. Each 512×512 image is a schematic that **carries its own
-legend**. The legend binds abstract node **shapes** to component-type labels
+A **fine-tuning** challenge: adapt a pretrained model, from 4,000 labeled examples,
+to a new structured capability. Each 512×512 example is a schematic that **carries
+its own legend**. The legend binds abstract node **shapes** to component-type labels
 (`A`–`G`) and connector **line-styles** to relation labels
 (`feeds`, `blocks`, `syncs`, `gates`). The schematic then draws those shape-nodes
 joined by directed, styled connectors.
