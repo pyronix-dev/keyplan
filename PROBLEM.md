@@ -88,3 +88,33 @@ Example row: `e_00007,"A|feeds|C;C|blocks|D;D|syncs|A"`
   metadata are hidden. Do not attempt to reconstruct or scrape hidden files.
 - **Determinism.** Your training and inference should be reproducible from a fixed
   seed.
+
+## Allowed
+
+- Training or fine-tuning any model (CNN, ViT, vision-language model, or a
+  from-scratch pipeline) on the provided `train` images and labels.
+- Using openly licensed pretrained vision / vision-language backbones and the
+  standard Kaggle Docker libraries (numpy, pandas, torch, torchvision, timm,
+  transformers, PIL, scikit-image, …).
+- Any classical computer-vision approach (segmentation, template matching, line
+  tracing, OCR of the legend, etc.) built by you.
+- Holding out part of `train` for validation; test-time augmentation; ensembling
+  your own models.
+- Reading the legend and schematic straight from the pixels — that is the task.
+
+## Not allowed
+
+- **LLM/VLM API outputs in the submission.** Do not prompt an external hosted
+  model (or any third-party service) to produce predictions; the submission must
+  come from your own model or algorithm running on the test images.
+- **Using hidden data.** Test labels and the per-image legend metadata
+  (`scheme_json`) are not provided — do not scrape, reconstruct, or otherwise
+  obtain them, and do not hard-code answers for specific test ids.
+- **Leaking a fixed global mapping.** You may not assume any constant shape→type or
+  style→relation mapping; the bindings are randomized per image and must be read
+  from each image's legend. (Such an assumption is also provably capped near the
+  chance floor.)
+- **Non-reproducible submissions.** No dependence on network calls at inference,
+  external services, or unseeded randomness that changes the output run to run.
+- **Manual labeling.** Do not annotate the test images by hand or crowdsource their
+  triples; predictions must be produced programmatically by your solution.
